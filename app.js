@@ -2,6 +2,7 @@
 // 58 preguntas: selección múltiple (3 opciones), respuesta brevísima y reconocimiento con imagen.
 // Diseñado para práctica espaciada: fallos vuelven antes; aciertos se espacian en intervalos crecientes.
 
+
 // === DIAGNÓSTICO: útil si se abre en navegador local ===
 document.addEventListener("DOMContentLoaded", () => {
   const ind = document.getElementById("js-indicator");
@@ -336,7 +337,7 @@ function renderPregunta() {
   let html = `
     <div class="question-text">
       <span class="q-es">${q.es}</span>
-      <span class="q-hint">${q.hint ?? ""}</span>
+      
     </div>
   `;
   if (q.img) {

@@ -330,9 +330,9 @@ function renderPregunta() {
   if (esMulti(q)) {
     const respGuardada = respuestasUsuario[idxPregunta];
     html += `<div class="options">`;
-    const opcionesBarajadas = q.opciones
-  .map((texto, i) => ({ texto, original: i }))
-  .sort(() => Math.random() - 0.5);
+    const opcionesBarajadas = barajar(
+  q.opciones.map((texto, i) => ({ texto, original: i }))
+);
 
 q._opcionesBarajadas = opcionesBarajadas;
 

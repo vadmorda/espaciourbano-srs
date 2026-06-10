@@ -330,9 +330,18 @@ function renderPregunta() {
   if (esMulti(q)) {
     const respGuardada = respuestasUsuario[idxPregunta];
     html += `<div class="options">`;
-    q.opciones.forEach((op, iOp) => {
-      html += `<label class="option"><input type="radio" name="resp" value="${iOp}" ${respGuardada === iOp ? "checked" : ""}><div class="option-text">${op}</div></label>`;
-    });
+    const opcionesBarajadas = q.opciones
+  .map((texto, i) => ({ texto, original: i }))
+  .sort(() => Math.random() - 0.5);
+
+q._opcionesBarajadas = opcionesBarajadas;
+
+opcionesBarajadas.forEach((op, iOp) => {
+  html += `<label class="option">
+    <input type="radio" name="resp" value="${op.original}" ${respGuardada === op.original ? "checked" : ""}>
+    <div class="option-text">${op.texto}</div>
+  </label>`;
+});
     html += `</div>`;
   } else if (esCorta(q)) {
     const valor = respuestasUsuario[idxPregunta] ?? "";
